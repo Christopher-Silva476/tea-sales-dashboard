@@ -1,6 +1,6 @@
 # 🍵 茶饮销售数据分析看板
 
-基于 **Python + MySQL + Flask + ECharts** 的茶饮销售数据分析 Web 看板项目，用于数据清洗、SQL 多表分析、接口开发与前端可视化的一体化实践，**可作为数据分析师求职作品集项目**。
+基于 **Python + MySQL + Flask + ECharts** 的茶饮销售数据分析 Web 看板项目，用于数据清洗、SQL 多表分析、接口开发与前端可视化的一体化实践。
 
 ![看板效果预览](docs/dashboard_preview.png)
 
