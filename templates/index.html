@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>茶饮销售数据分析看板</title>
+    <!-- ECharts 5.x CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.5.0/dist/echarts.min.js"></script>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <!-- ============ 页面头部 ============ -->
+    <header class="topbar">
+        <h1>🍵 茶饮销售数据分析看板</h1>
+        <p class="subtitle">Tea Beverage Sales Analytics Dashboard · 基于 MySQL + Flask + ECharts</p>
+        <span id="mode-tag" class="mode-tag">数据源加载中…</span>
+    </header>
+
+    <!-- ============ 01/05 KPI 卡片区 ============ -->
+    <section class="kpi-row" id="kpiRow">
+        <div class="kpi-card">
+            <div class="kpi-label">总销售额（元）</div>
+            <div class="kpi-value" id="kpiRevenue">--</div>
+            <div class="kpi-hint">Total Revenue</div>
+        </div>
+        <div class="kpi-card">
+            <div class="kpi-label">订单量（单）</div>
+            <div class="kpi-value" id="kpiOrders">--</div>
+            <div class="kpi-hint">Total Orders</div>
+        </div>
+        <div class="kpi-card">
+            <div class="kpi-label">客单价（元）</div>
+            <div class="kpi-value" id="kpiAvgOrder">--</div>
+            <div class="kpi-hint">Avg Order Value</div>
+        </div>
+        <div class="kpi-card">
+            <div class="kpi-label">月度营收环比</div>
+            <div class="kpi-value" id="kpiMom">--</div>
+            <div class="kpi-hint">Month-over-Month</div>
+        </div>
+    </section>
+
+    <!-- ============ 图表容器网格 ============ -->
+    <main class="grid">
+        <!-- 06 月度营收 / 销量趋势（折线图） -->
+        <div class="panel panel-wide">
+            <div class="panel-title">月度营收与销量趋势 <small>Monthly Revenue & Volume</small></div>
+            <div id="chartTrend" class="chart"></div>
+        </div>
+
+        <!-- 品类营收排行（多表JOIN+窗口函数） -->
+        <div class="panel">
+            <div class="panel-title">品类营收排行 <small>Category Revenue Ranking</small></div>
+            <div id="chartCategory" class="chart"></div>
+        </div>
+
+        <!-- 城市营收对比 -->
+        <div class="panel">
+            <div class="panel-title">城市营收对比 <small>City Revenue</small></div>
+            <div id="chartCity" class="chart"></div>
+        </div>
+
+        <!-- 07 城市 × 季节（分组柱状图） -->
+        <div class="panel panel-wide">
+            <div class="panel-title">城市 × 季节营收分析 <small>City × Season</small></div>
+            <div id="chartSeason" class="chart"></div>
+        </div>
+
+        <!-- 08 节假日 × 折扣率 热力图 -->
+        <div class="panel">
+            <div class="panel-title">节假日 × 折扣率 销量热力图 <small>Holiday × Discount Heatmap</small></div>
+            <div id="chartHeatmap" class="chart"></div>
+        </div>
+    </main>
+
+    <footer class="foot">
+        数据来源：MySQL 订单表（orders）× 商品表（product）× 品类表（category）多表查询 · 模拟数据
+    </footer>
+
+    <!-- 页面脚本 -->
+    <script src="{{ url_for('static', filename='js/kpi.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/charts.js') }}"></script>
+</body>
+</html>

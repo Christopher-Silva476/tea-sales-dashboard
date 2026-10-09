@@ -1,0 +1,7 @@
+# 项目运行所需 Python 依赖
+# 安装: pip install -r requirements.txt
+
+flask>=3.0        # Web 框架，提供页面与 JSON 接口
+pandas>=2.0       # 数据清洗与二次分析
+numpy>=1.24       # 数值计算
+pymysql>=1.1      # MySQL 驱动（Python 3 纯 Python 实现）
